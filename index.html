@@ -5,11 +5,7 @@
     <title>Garden Grimoire</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
         .center-text {
             text-align: center;
@@ -39,6 +35,11 @@
             color: white;
         }
 
+        .btn-custom4 {
+            background-color: #002e91;
+            color: white;
+        }
+
         .btn-home {
             background-color: #839100;
             color: white;
@@ -46,495 +47,163 @@
     </style>
 </head>
 
-<body onload="showCategory('Home', '#ffffff')">
+<body>
+    <!-- Jumbotron -->
     <div class="jumbotron custom-jumbotron">
         <h1 class="center-text">The Garden Grimoire</h1>
         <h5 class="center-text">Explore the Magic of Flowers</h5>
     </div>
 
-    <!-- Alert -->
-    <div class="alert alert-info" role="alert">
-        New flower entries have been added! Check them out below.
-    </div>
-
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-custom bg-light">
         <div class="container-fluid">
-            <span class="navbar-brand">Flower Categories</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link btn-home" href="#" onclick="showCategory('Home')">Home</a>
-                    </li>
-                    <a class="nav-link btn-custom1" href="#" onclick="showCategory('Plants')">Plants</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-custom2" href="#" onclick="showCategory('Shrubs')">Shrubs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-custom3" href="#" onclick="showCategory('Trees')">Trees</a>
-                    </li>
-                </ul>
+            <div class="d-flex ms-auto">
+                <span class="navbar-brand">Navigation</span>
+                <a class="btn btn-home mx-1" href="index.html">Home</a>
+                <a class="btn btn-custom1 mx-1" href="plants.html">Plants</a>
+                <a class="btn btn-custom2 mx-1" href="shrubs.html">Shrubs</a>
+                <a class="btn btn-custom3 mx-1" href="trees.html">Trees</a>
+                <a class="btn btn-custom4 mx-1" href="flowers.html">Flowers</a>
             </div>
         </div>
     </nav>
 
-    <!-- Home Section with Cards -->
-    <div id="Home" class="category">
-        <br>
-        <h2>Welcome to The Garden Grimoire</h2>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="card" style="background-color: #009133;">
-                        <img src="images/lavender.jpg" class="card-img-top" alt="Lavender Flower">
-                        <div class="card-body">
-                            <h5 class="card-title">Lavender</h5>
-                            <p class="card-text">Lavender, scientifically classified as Lavandula, is a member of the
-                                mint family...</p>
-                            <a href="#" class="btn btn-custom1" onclick="showCategory('Plants', '#009133')">Read
-                                More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card" style="background-color: #009187;">
-                        <img src="images/lilac.jpg" class="card-img-top" alt="Lilac Flower">
-                        <div class="card-body">
-                            <h5 class="card-title">Lilac</h5>
-                            <p class="card-text">The lilac, or Syringa vulgaris, falls within the olive family...</p>
-                            <a href="#" class="btn btn-custom2" onclick="showCategory('Shrubs', '#009187')">Read
-                                More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card" style="background-color: #006f91;">
-                        <img src="images/cherryblossom.jpg" class="card-img-top" alt="Cherry Blossom Flower">
-                        <div class="card-body">
-                            <h5 class="card-title">Cherry Blossom</h5>
-                            <p class="card-text">Cherry blossoms, known scientifically as Prunus serrulata, belong to
-                                the Rosaceae family...</p>
-                            <a href="#" class="btn btn-custom3" onclick="showCategory('Trees', '#006f91')">Read More</a>
-                        </div>
-                    </div>
-                </div>
+    <!-- Toast -->
+    <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
+        data-bs-autohide="false">
+        <div class="d-flex">
+            <div class="toast-body">
+                We've added a section with all the flowers in the collection! Check it out!
             </div>
-            <!-- Suggestion Form -->
-            <div class="container-fluid">
-                <br>
-                <h3>Suggest a Flower to be Added to the Collection!</h3>
-                <form>
-                    <div class="mb-3">
-                        <label for="flowerName" class="form-label">Flower Name</label>
-                        <input type="text" class="form-control" id="flowerName" placeholder="Enter flower name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="flowerDescription" class="form-label">Description</label>
-                        <textarea class="form-control" id="flowerDescription" rows="3"
-                            placeholder="Enter flower description"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-info">Submit</button>
-                </form>
-                <br>
-            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
 
-    <div id="Plants" class="category">
-        <br>
-        <h2>Plants <span class="badge btn-custom1">5 Flowers</span><button type="button" class="btn btn-info"
-                data-bs-toggle="popover" data-bs-trigger="hover focus" title="Plants"
-                data-bs-content="Plants are multicellular organisms in the kingdom Plantae that use photosynthesis to make their own food.">What
-                are Plants?</button></h2>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color: #009133;">
-                    <img class="img-fluid" src="images/lavender.jpg" alt="Lavender Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Lavender</h4>
-                    <p>Lavender, scientifically classified as Lavandula, is a member of the mint family, Lamiaceae.
-                        This
-                        aromatic flowering plant is native to the Mediterranean region but has since spread across
-                        Europe, North America, and parts of Asia. It thrives in dry, well-drained soil and is well
-                        known
-                        for its soothing fragrance. Lavender flowers appear in shades of purple, though some
-                        varieties
-                        bloom in pink, blue, or white. The plant is widely cultivated for its essential oils, which
-                        are
-                        used in perfumes, herbal remedies, and even culinary applications.
-                        <br>Lavender has long been associated with tranquility, protection, and purification. In
-                        ancient
-                        Rome, it was prized for its cleansing properties, often added to bathwater to promote
-                        relaxation. The plant’s name is derived from the Latin word lavare, meaning “to wash.” Many
-                        cultures believe lavender wards off evil spirits and bad luck, while others see it as a
-                        symbol
-                        of love and devotion. A medieval legend tells of a young healer who planted lavender around
-                        her
-                        village, keeping illness at bay and bringing peace to those who lived there. Today, lavender
-                        remains a popular herb for relaxation and wellness, cherished for both its beauty and
-                        practical
-                        benefits.
-                    </p>
+    <!-- Section with Cards -->
+<div class="container">
+    <br>
+    <h2>Welcome to The Garden Grimoire</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card" style="background-color: #009133;">
+                <a href="plants.html">
+                    <img src="images/lavender.jpg" class="card-img-top" alt="Lavender Flower">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Lavender</h5>
+                    <p class="card-text">Lavender, scientifically classified as Lavandula, is a member of the mint family...</p>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color: #009133;">
-                    <img class="img-fluid" src="images/daffodils.jpg" alt="Daffodil Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Daffodil</h4>
-                    <p>Daffodils, scientifically known as Narcissus, belong to the Amaryllidaceae family and are one
-                        of
-                        the earliest signs of spring. Native to Europe and North Africa, they have been widely
-                        cultivated around the world for centuries. These perennials produce bright yellow, white, or
-                        orange trumpet-shaped flowers, emerging from bulbs that lie dormant through the winter.
-                        Daffodils thrive in a variety of environments, from wild meadows to carefully tended
-                        gardens,
-                        and they are known for their ability to naturalize and spread over time.
-                        <br>Daffodils are often associated with rebirth, new beginnings, and unyielding hope. Their
-                        name, Narcissus, originates from Greek mythology, telling the story of a beautiful youth who
-                        fell in love with his own reflection and was transformed into a flower upon his death. In
-                        many
-                        cultures, daffodils are seen as a harbinger of good fortune, particularly in Wales, where
-                        spotting the first daffodil of the season is believed to bring prosperity for the year
-                        ahead.
-                        Despite their cheerful appearance, daffodils are toxic when consumed, making them both a
-                        symbol
-                        of joy and a reminder of nature’s hidden dangers.
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color: #009133;">
-                    <img class="img-fluid" src="images/orchid.jpg" alt="Orchid Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Orchid</h4>
-                    <p>Orchids, encompassing the family Orchidaceae, represent one of the largest and most diverse
-                        groups of flowering plants, with over 25,000 species worldwide. These perennial plants are found
-                        on every continent except Antarctica, thriving in a wide range of habitats from tropical
-                        rainforests to arid deserts. Orchid flowers are celebrated for their intricate shapes, vibrant
-                        colors, and alluring fragrances, often adapted to attract specific pollinators. Many orchids are
-                        epiphytic, growing on other plants for support without drawing nutrients from them, while others
-                        are terrestrial, rooted in the soil.
-                        <br>
-                        Throughout history, orchids have been symbols of love, luxury, and beauty. In ancient Greece,
-                        they were associated with virility and fertility, while in Victorian England, collecting and
-                        cultivating orchids became a symbol of status and sophistication. In Chinese culture, orchids
-                        represent refinement and integrity, frequently depicted in traditional art and poetry. A
-                        Scottish legend tells of orchids as powerful talismans, believed to bring good luck and protect
-                        against the evil eye. Today, orchids remain popular as ornamental plants and are often gifted to
-                        convey admiration and affection.
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color: #009133;">
-                    <img class="img-fluid" src="images/marigold.jpg" alt="Marigold Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Marigold</h4>
-                    <p>Marigolds, primarily from the genus Tagetes, are vibrant flowering plants in the Asteraceae
-                        family. Native to Mexico and Central America, marigolds have been cultivated globally for their
-                        bright yellow, orange, and red blooms. These hardy annuals are known for their pungent scent and
-                        are commonly used in gardens to deter pests, as their aroma is believed to repel insects.
-                        Marigolds thrive in full sun and well-drained soil, making them a popular choice for both
-                        ornamental and practical gardening purposes.
-                        <br>
-                        Culturally, marigolds hold significant importance in various traditions. In Mexico, they are
-                        known as cempasúchil and play a vital role in Día de los Muertos (Day of the Dead) celebrations,
-                        where their vibrant colors and strong fragrance are believed to guide the spirits of the
-                        deceased back to the world of the living. In Hindu culture, marigolds are used in religious
-                        rituals and festivals, symbolizing auspiciousness and representing offerings to deities.
-                        According to Aztec legend, marigolds originated from the love story of two children, Xóchitl and
-                        Huitzilin, who shared a deep bond; after Huitzilin's death, the Sun God transformed Xóchitl into
-                        a marigold, allowing their love to endure eternally. This rich tapestry of symbolism and
-                        folklore underscores the marigold's enduring presence in human culture.
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color: #009133;">
-                    <img class="img-fluid" src="images/sunflower.jpg" alt="Sunflower Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Sunflower</h4>
-                    <p>Sunflowers, scientifically known as Helianthus annuus, are tall, annual plants in the Asteraceae
-                        family, native to North America. Characterized by their large, sun-like flower heads with bright
-                        yellow petals surrounding a central disc, sunflowers are heliotropic, turning their blooms to
-                        follow the sun's movement across the sky. They are cultivated for their edible seeds, which are
-                        a source of oil and snacks, as well as for their striking appearance in gardens and floral
-                        arrangements. Sunflowers are hardy plants that thrive in full sun and well-drained soil, often
-                        reaching impressive heights during the growing season.
-                        <br>
-                        Symbolically, sunflowers represent adoration, loyalty, and longevity. In Greek mythology, the
-                        nymph Clytie was transformed into a sunflower after pining for the Sun God Helios, eternally
-                        turning to face him as he moved across the sky. In various cultures, sunflowers are seen as
-                        symbols of positivity and strength, embodying the warmth and energy of the sun. Notably, the
-                        sunflower is the national flower of Ukraine, symbolizing peace and resilience; during the 2022
-                        Russian invasion of Ukraine, it became a global emblem of solidarity and hope. Additionally,
-                        sunflowers have been used in art and literature to convey themes of happiness and vitality, with
-                        artists like Vincent van Gogh famously capturing their vibrant essence in his paintings.
-                    </p>
-                </div>
-            </div>
-
         </div>
-    </div>
-
-    <div id="Shrubs" class="category" style="display:none;">
-        <br>
-        <h2>Shrubs <span class="badge btn-custom2">4 Flowers</span><button type="button" class="btn btn-info"
-                data-bs-toggle="popover" data-bs-trigger="hover focus" title="Shrubs"
-                data-bs-content="Shrubs are small to medium-sized woody plants, distinguished from trees by their multiple stems and shorter height.">What
-                are Shrubs?</button></h2>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color:#009187;">
-                    <img class="img-fluid" src="images/lilac.jpg" alt="Lilac Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Lilac</h4>
-                    <p>The lilac, or Syringa vulgaris, falls within the olive family, which also includes jasmine,
-                        Forsythia, and privet. It grows from a large deciduous shrub that blooms in spring. While it
-                        is
-                        native to the Balkan Peninsula, it has been spread throughout parts of Asia, Europe, and
-                        North
-                        America. The common name lilac descends from several different languages all the way back to
-                        the
-                        Persian words meaning “indigo” or “dark blue”.
-                        <br>There are over one thousand varieties of lilac and two hundred species. Lilacs are also
-                        edible and can be made into things like lilac sugar, syrup, or even wine. These flowers are
-                        symbols of love, hope, and new beginnings. In Greek mythology, lilacs are said to have been
-                        formed from the tears of a nymph named Syringa, who transformed herself into the very same
-                        plant
-                        to escape the unwanted advances of the Greek god named Pan.
-                    </p>
+        <div class="col-sm-4">
+            <div class="card" style="background-color: #009187;">
+                <a href="shrubs.html">
+                    <img src="images/lilac.jpg" class="card-img-top" alt="Lilac Flower">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Lilac</h5>
+                    <p class="card-text">The lilac, or Syringa vulgaris, falls within the olive family...</p>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color: #009187;">
-                    <img class="img-fluid" src="images/rose.jpg" alt="Rose Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Rose</h4>
-                    <p>Roses, belonging to the Rosaceae family, share their lineage with apples, pears, and almonds.
-                        These perennial shrubs or climbers can bloom in various seasons, depending on their species.
-                        Originating from regions across the Northern Hemisphere, including Europe, Asia, and North
-                        America, roses have been cultivated and cherished worldwide. The name "rose" comes from the
-                        Latin "rosa," a term that has been embraced by many languages.
-                        <br>With over three hundred species and thousands of cultivars, roses are celebrated not
-                        only
-                        for their beauty and fragrance but also for their culinary uses. They are edible in the
-                        sense
-                        that they can be made into rose water, jam, and tea. Symbolizing a range of ideas, from love
-                        and
-                        beauty to passion and sorrow, roses hold a special place in many cultures.In Greek
-                        mythology,
-                        the rose is linked to Aphrodite, the goddess of love, who is said to have created the flower
-                        from her tears and the blood of her lover, Adonis.
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color:#009187;">
-                    <img class="img-fluid" src="images/Azalea.jpg" alt="Azalea Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Azalea</h4>
-                    <p>Azaleas are flowering shrubs within the genus Rhododendron and part of the family Ericaceae.
-                        They
-                        bloom in spring and their blossoms often last several weeks. Azalea flowers come in a
-                        variety of
-                        vibrant colors, including red, purple, pink, white, and others. Most kinds of Azalea are
-                        deciduous, so they shed their leaves in the fall. There are hundreds of varieties that come
-                        in
-                        range of forms and sizes, and can be found in North America as well as parts of Asia and
-                        Europe.
-                        They are shade preferring plants, and often grow under or near trees.
-                        <br>While beautiful, azaleas are highly toxic. In fact, Azaleas and rhododendrons were once
-                        so
-                        well known for their toxicity, that it was a known death threat to recieve a boquet in a
-                        black
-                        vase. The name azalea originates greece, meaning dry, a reference to its quick-draining
-                        habit.
-                        It has a wide range of symbolsim stemming from different cultures, including good fortune,
-                        care
-                        for loved ones, harmony, and more. According to mythology, there was once a young prince who
-                        fell in love with a princess, but she was cursed to become an azalea bush. The prince's love
-                        and
-                        devotion for her eventually broke the curse and she turned back.
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color:#009187;">
-                    <img class="img-fluid" src="images/mountainlaurel.jpg" alt="Mountain Laurel Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Mountain Laurel</h4>
-                    <p>Mountain laurel, or Kalmia latifolia, is an evergreen shrub belonging to the heath family,
-                        Ericaceae, which also includes rhododendrons and blueberries. Native to eastern North
-                        America,
-                        it thrives in mountainous and woodland areas, often growing in dense thickets. Blooming in
-                        late
-                        spring to early summer, its distinctive flowers range in color from pale pink to deep rose,
-                        with
-                        delicate markings resembling intricate patterns. The plant’s glossy, dark green leaves
-                        remain
-                        vibrant year-round, adding to its appeal as an ornamental shrub. However, all parts of
-                        mountain
-                        laurel are highly toxic to humans and animals if ingested.
-                        <br>Symbolically, mountain laurel represents perseverance, ambition, and protection. It was
-                        named after Pehr Kalm, a Swedish botanist who studied North American flora in the 18th
-                        century.
-                        Indigenous peoples valued the plant for its resilience, and it was sometimes used in
-                        ceremonies
-                        or as a protective charm. According to Appalachian folklore, a young woman once wove a crown
-                        of
-                        mountain laurel to guide her lost love home, but when he never returned, the flowers turned
-                        from
-                        white to pink, reflecting her sorrow. Today, mountain laurel is cherished for its beauty and
-                        is
-                        even recognized as the state flower of Pennsylvania and Connecticut.
-                    </p>
-                </div>
-            </div>
-
         </div>
-    </div>
-
-    <div id="Trees" class="category" style="display:none;">
-        <br>
-        <h2>Trees <span class="badge btn-custom3">3 Flowers</span><button type="button" class="btn btn-info"
-                data-bs-toggle="popover" data-bs-trigger="hover focus" title="Trees"
-                data-bs-content="Trees are perennial plants with an elongated stem, or trunk, supporting branches and leaves.">What
-                are Trees?</button></h2>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color: #006f91;">
-                    <img class="img-fluid" src="images/cherryblossom.jpg" alt="Cherry Blossom Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Cherry Blossom</h4>
-                    <p>Cherry blossoms, known scientifically as Prunus serrulata, belong to the Rosaceae family,
-                        which
-                        also includes roses, apples, and peaches. These delicate flowers bloom in early spring,
-                        often
-                        before their leaves fully emerge. Native to East Asia, particularly Japan, China, and Korea,
-                        cherry blossoms have become a symbol of renewal and fleeting beauty. While they are most
-                        commonly associated with pale pink hues, some varieties produce white or even darker pink
-                        blossoms. The trees are typically ornamental, though some species do bear small, inedible
-                        fruit.
-                        <br>Cherry blossoms hold deep cultural significance, especially in Japan, where the annual
-                        hanami tradition involves gathering under the trees to appreciate their short-lived beauty.
-                        The
-                        flowers are often linked to themes of impermanence and the transient nature of life, a
-                        concept
-                        rooted in Buddhist teachings. According to Japanese folklore, a spirit once inhabited a
-                        cherry
-                        tree, and when a kind-hearted samurai saved it from destruction, the tree burst into
-                        breathtaking blossoms as a sign of gratitude. Today, cherry blossoms remain a beloved symbol
-                        worldwide, often planted in parks and gardens as a reminder of nature’s fleeting wonders.
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color: #006f91;">
-                    <img class="img-fluid" src="images/magnolia.jpg" alt="Magnolia Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Magnolia</h4>
-                    <p>Magnolias, belonging to the genus Magnolia, are ancient flowering plants within the family
-                        Magnoliaceae. These trees and shrubs are native to Asia and the Americas, thriving in a variety
-                        of climates from temperate to tropical regions. Magnolia blossoms are renowned for their large,
-                        fragrant flowers, which can be white, pink, purple, or yellow, depending on the species. The
-                        glossy, leathery leaves and cone-like fruit add to the plant's ornamental appeal. Fossil records
-                        indicate that magnolias have existed for millions of years, predating bees, with beetles serving
-                        as their primary pollinators.
-                        <br>
-                        Symbolically, magnolias represent endurance, strength, and beauty. In Chinese culture, they are
-                        associated with purity and nobility, often featured in art and literature. In the southern
-                        United States, magnolias are emblematic of the region's natural beauty and are frequently
-                        mentioned in songs and stories. According to folklore, magnolia trees possess protective
-                        qualities, and planting one near a home is believed to safeguard the inhabitants. Their timeless
-                        elegance continues to inspire admiration and reverence across various cultures.
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-3 d-flex align-items-center justify-content-center"
-                    style="background-color: #006f91;">
-                    <img class="img-fluid" src="images/dogwood.jpg" alt="Dogwood Flower">
-                </div>
-                <div class="col-sm-9" style="background-color:rgb(255, 255, 255);">
-                    <h4>Dogwood</h4>
-                    <p>Dogwoods, classified under the genus Cornus, are deciduous trees and shrubs in the family
-                        Cornaceae. Native to Europe, Asia, and North America, dogwoods are especially celebrated for
-                        their springtime display of blossoms, which are typically white or pink. However, what appear to
-                        be petals are actually bracts, specialized leaves that surround the true, less conspicuous
-                        flowers. The foliage often turns vibrant shades of red and purple in the fall, adding to the
-                        plant's seasonal interest. Many species also produce attractive berries that provide food for
-                        wildlife.
-                        <br>
-                        In various cultures, dogwoods symbolize durability and resilience. In Christian tradition, the
-                        dogwood is linked to the crucifixion of Jesus Christ; legend suggests that the tree was once
-                        large and sturdy, but after being used to construct the cross, it was transformed into a
-                        smaller, more delicate form as a sign of humility and repentance. In the language of flowers,
-                        dogwoods convey messages of affection and steadfastness. Their graceful appearance and rich
-                        symbolism make them a cherished addition to landscapes and gardens.
-                    </p>
+        <div class="col-sm-4">
+            <div class="card" style="background-color: #006f91;">
+                <a href="trees.html">
+                    <img src="images/cherryblossom.jpg" class="card-img-top" alt="Cherry Blossom Flower">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Cherry Blossom</h5>
+                    <p class="card-text">Cherry blossoms, known scientifically as Prunus serrulata, belong to the Rosaceae family...</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
+    <!-- Media Object -->
+    <div class="container">
+        <br>
+        <div class="media">
+            <img src="images/Icon.jpg" class="mr-3" alt="Icon" style="width: 64px; height: 64px;">
+            <div class="media-body">
+                <h5 class="mt-0">What flowers can do for you!</h5>
+                <p>The more you know about flowers, the more you can appreciate their beauty and
+                    significance. Flowers are not just pretty to look at; they have a rich history and cultural
+                    significance that can enhance your gardening experience. Suggest a flower to be added to the
+                    collection today to learn more about your favorites!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suggestion Form -->
+    <div class="container-fluid">
+        <br>
+        <h3>Suggest a Flower to be Added to the Collection!</h3>
+        <form>
+            <div class="mb-3">
+                <label for="flowerName" class="form-label">Flower Name</label>
+                <input type="text" class="form-control" id="flowerName" placeholder="Enter flower name">
+            </div>
+            <div class="mb-3">
+                <label for="flowerDescription" class="form-label">Description</label>
+                <textarea class="form-control" id="flowerDescription" rows="3"
+                    placeholder="Enter flower description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="flowerType" class="form-label">Flower Type</label>
+                <select class="form-select" id="flowerType">
+                    <option value="annual">Annual</option>
+                    <option value="perennial">Perennial</option>
+                    <option value="biennial">Biennial</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Sunlight Requirement</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sunlight" id="fullSun" value="fullSun">
+                        <label class="form-check-label" for="fullSun">Full Sun</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sunlight" id="partialSun" value="partialSun">
+                        <label class="form-check-label" for="partialSun">Partial Sun</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sunlight" id="shade" value="shade">
+                        <label class="form-check-label" for="shade">Shade</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="fragrant" value="fragrant">
+                    <label class="form-check-label" for="fragrant">Fragrant</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-info">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form>
+        <br>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
+    <!-- Toast Script -->
     <script>
-        function showCategory(category) {
-            document.querySelectorAll('.category').forEach(el => el.style.display = 'none');
-            document.getElementById(category).style.display = 'block';
-        }
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        var toastList = toastElList.map(function (toastEl) {
+            return new bootstrap.Toast(toastEl)
+        })
+        toastList.forEach(toast => toast.show())
     </script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-                return new bootstrap.Popover(popoverTriggerEl)
-            })
-        });
-    </script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 The Garden Grimoire</p>
+    </footer>
 </body>
-
-</html>
